@@ -11,40 +11,9 @@ namespace MB_DONNES
     public class RessourceDAO
     {
         /// <summary>
-        /// Insertion d'une ressource dans la base de donnée
+        /// Séléction de la liste des repos
         /// </summary>
-        /// <param name="R">Ressource</param>
-        /// <returns>Réussi: 1 | Pas réussi: 0</returns>
-        public static int InsertRessource(Repo R)
-        {
-            try
-            {
-                MySqlConnection connexion = Connexion.SeConnecter();
-                connexion.Open();
-                MySqlCommand cmdInsert = new MySqlCommand();
-                cmdInsert.Connection = connexion;
-                cmdInsert.CommandText = "INSERT INTO Ressource(label, nb_place, state, serial_number, type_ress)"
-                + "VALUES (@libelle, @places, @state, @serialNum, @type)";
-                cmdInsert.Parameters.AddWithValue("@libelle", R.GetLabel());
-                cmdInsert.Parameters.AddWithValue("@places", Convert.ToInt32(R.GetNbPlace()));
-                cmdInsert.Parameters.AddWithValue("@state", R.GetState());
-                cmdInsert.Parameters.AddWithValue("@serialNum", R.GetSerialNumber());
-                cmdInsert.Parameters.AddWithValue("@type", R.GetTypeRess());
-                int res = cmdInsert.ExecuteNonQuery();
-                connexion.Close();
-                return res;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
-                return 0;
-            }
-        }
-
-        /// <summary>
-        /// Séléction de la liste des types ressource pour l'afficher dans le menu de séléction
-        /// </summary>
-        /// <returns>Liste des types ressource</returns>
+        /// <returns>Liste des repos</returns>
         public static List<string> SelectListRepo()
         {
             List<string> listAllRepo = new List<string>();
@@ -73,6 +42,34 @@ namespace MB_DONNES
                 Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
 
                 return listAllRepo;
+            }
+        }
+
+        /// <summary>
+        /// Insertion d'une repo
+        /// </summary>
+        /// <param name="R">Namespace du repo</param>
+        /// <returns>Réussi: 1 | Pas réussi: 0</returns>
+        public static int InsertRessource(Repo R)
+        {
+            try
+            {
+                MySqlConnection connexion = Connexion.SeConnecter();
+                connexion.Open();
+                MySqlCommand cmdInsert = new MySqlCommand();
+                cmdInsert.Connection = connexion;
+                cmdInsert.CommandText = "INSERT INTO Ressource(label, namespace)"
+                + "VALUES (@label, @namespace)";
+                cmdInsert.Parameters.AddWithValue("@label", R.GetLabel());
+                cmdInsert.Parameters.AddWithValue("@namespace", Convert.ToInt32(R.GetNbPlace()));
+                int res = cmdInsert.ExecuteNonQuery();
+                connexion.Close();
+                return res;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
+                return 0;
             }
         }
 

@@ -39,35 +39,12 @@ namespace MB_PRESENTATION
             }
         }
 
-        private void btnValider_Click(object sender, EventArgs e)
+        private void btnCreateRepo_Click(object sender, EventArgs e)
         {
-            string labelRess = txtLabel.Text;
-            int nbPlace = (int)txtNbPlace.Value;
-            string state = txtState.Text;
-            string serialNumber = txtSerialNumber.Text;
-            string typeRess = RecupCodeTypeRess(txtType.Text);
+            string label = txtLabel.Text;
+            string namespaceGit = txtNamespace.Text;
 
-            int returnInsRess = 0;
-            if (typeRess == "PC")
-            {
-                Repo ress = new Repo(labelRess, state, serialNumber, typeRess);
-                returnInsRess = RessourceDAO.InsertRessource(ress);
-            } else
-            {
-                Repo ress = new Repo(labelRess, nbPlace, typeRess);
-                returnInsRess = RessourceDAO.InsertRessource(ress);
-            }
-
-            if (returnInsRess == 0)
-                MessageBox.Show("Erreur: La ressource n'a pas pu être ajoutée", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Ressource ajoutée avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            txtLabel.Clear();
-            txtType.SelectedIndex = -1;
-            txtNbPlace.Value = 1;
-            txtState.SelectedIndex = -1;
-            txtSerialNumber.Clear();
-            txtLabel.Focus();
+            // Insertion à faire (RessourceDAO)
         }
 
         private void txtType_SelectedIndexChanged(object sender, EventArgs e)

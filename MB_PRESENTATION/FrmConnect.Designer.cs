@@ -32,7 +32,6 @@ namespace MB_PRESENTATION
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLabel = new System.Windows.Forms.TextBox();
-            this.btnValider = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNamespace = new System.Windows.Forms.TextBox();
@@ -40,6 +39,7 @@ namespace MB_PRESENTATION
             this.label4 = new System.Windows.Forms.Label();
             this.listRepo = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnCreateRepo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,17 +67,6 @@ namespace MB_PRESENTATION
             this.txtLabel.Name = "txtLabel";
             this.txtLabel.Size = new System.Drawing.Size(330, 26);
             this.txtLabel.TabIndex = 1;
-            // 
-            // btnValider
-            // 
-            this.btnValider.Font = new System.Drawing.Font("Ebrima", 10F);
-            this.btnValider.Location = new System.Drawing.Point(671, 239);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(75, 30);
-            this.btnValider.TabIndex = 6;
-            this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = true;
-            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // label5
             // 
@@ -144,12 +133,24 @@ namespace MB_PRESENTATION
             this.label7.TabIndex = 16;
             this.label7.Text = "OU";
             // 
+            // btnCreateRepo
+            // 
+            this.btnCreateRepo.Font = new System.Drawing.Font("Ebrima", 10F);
+            this.btnCreateRepo.Location = new System.Drawing.Point(671, 239);
+            this.btnCreateRepo.Name = "btnCreateRepo";
+            this.btnCreateRepo.Size = new System.Drawing.Size(75, 30);
+            this.btnCreateRepo.TabIndex = 17;
+            this.btnCreateRepo.Text = "Valider";
+            this.btnCreateRepo.UseVisualStyleBackColor = true;
+            this.btnCreateRepo.Click += new System.EventHandler(this.btnCreateRepo_Click);
+            // 
             // FrmConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCreateRepo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.listRepo);
             this.Controls.Add(this.label4);
@@ -157,7 +158,6 @@ namespace MB_PRESENTATION
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnValider);
             this.Controls.Add(this.txtLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -173,7 +173,6 @@ namespace MB_PRESENTATION
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtLabel;
-        private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNamespace;
@@ -181,6 +180,7 @@ namespace MB_PRESENTATION
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox listRepo;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnCreateRepo;
     }
 }
 
