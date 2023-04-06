@@ -14,24 +14,11 @@ namespace MB_PRESENTATION
 {
     public partial class FrmConnect : Form
     {
-        public List<string> allListRepo = RessourceDAO.SelectListRepo();
-
-        public string RecupCodeTypeRess(string label)
+        public void loadListAllRepo()
         {
-            string tmp = "error";
-            for (int i = 0; i < allListRepo.Count; i++)
-            {
-                if (allListRepo[i] == label)
-                {
-                    tmp = allListRepo[i];
-                }
-            }
-            return tmp;
-        }
-
-        public FrmConnect()
-        {
-            InitializeComponent();
+            List<string> allListRepo = RessourceDAO.SelectListRepo();
+            
+            listRepo.Items.Clear();
 
             foreach (var item in allListRepo)
             {
@@ -39,42 +26,38 @@ namespace MB_PRESENTATION
             }
         }
 
+        public FrmConnect()
+        {
+            InitializeComponent();
+
+            loadListAllRepo();
+        }
+
         private void btnCreateRepo_Click(object sender, EventArgs e)
         {
             string label = txtLabel.Text;
             string namespaceGit = txtNamespace.Text;
 
-            // Insertion à faire (RessourceDAO)
-        }
-
-        private void txtType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (txtType.Text == "Ordinateur")
+            int result = RessourceDAO.InsertRepo(label, namespaceGit);
+            if (result == 1)
             {
-                txtNbPlace.Enabled = false;
-                txtState.Enabled = true;
-                txtSerialNumber.Enabled = true;
-            } else
-            {
-                txtNbPlace.Enabled = true;
-                txtState.Enabled = false;
-                txtSerialNumber.Enabled = false;
+                MessageBox.Show("Insertion de la Repo faite avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+                MessageBox.Show("L'insertion de la Repo n'a pas pu être executé", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            loadListAllRepo();
         }
 
-        private void btnAnnuler_Click(object sender, EventArgs e)
+        private void listRepo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtLabel.Clear();
-            txtType.SelectedIndex = -1;
-            txtNbPlace.Value = 1;
-            txtState.SelectedIndex = -1;
-            txtSerialNumber.Clear();
-            txtLabel.Focus();
-        }
+            int selInd = listRepo.SelectedIndex;
+            string item = listRepo.SelectedItems[selInd].ToString();
 
-        private void btnRedirectUpdateRess_Click(object sender, EventArgs e)
-        {
-            //Maybe afficher une popup avec la liste des ressources et qui demande laquelle on veux choisir
+            this.Hide();
+            FrmDisplay displayForm = new FrmDisplay(item);
+            displayForm.ShowDialog();
+            this.Close();
         }
     }
 }

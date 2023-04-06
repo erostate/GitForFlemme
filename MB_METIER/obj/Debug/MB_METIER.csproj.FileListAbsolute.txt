@@ -4,3 +4,9 @@ Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug
 Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.csproj.CoreCompileInputs.cache
 Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.dll
 Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.pdb
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\bin\Debug\MB_METIER.dll
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\bin\Debug\MB_METIER.pdb
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\obj\Debug\MB_METIER.csproj.AssemblyReference.cache
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\obj\Debug\MB_METIER.csproj.CoreCompileInputs.cache
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\obj\Debug\MB_METIER.dll
+C:\wamp64\www\c#\GitForFlemme\MB_METIER\obj\Debug\MB_METIER.pdb

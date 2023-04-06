@@ -93,7 +93,7 @@ namespace MB_PRESENTATION
             this.txtNamespace.Location = new System.Drawing.Point(416, 183);
             this.txtNamespace.Name = "txtNamespace";
             this.txtNamespace.Size = new System.Drawing.Size(330, 26);
-            this.txtNamespace.TabIndex = 13;
+            this.txtNamespace.TabIndex = 2;
             // 
             // label3
             // 
@@ -111,9 +111,9 @@ namespace MB_PRESENTATION
             this.label4.Font = new System.Drawing.Font("Ebrima", 15F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(46, 41);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(146, 28);
+            this.label4.Size = new System.Drawing.Size(161, 28);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Créer un Repo";
+            this.label4.Text = "Choisir un Repo";
             // 
             // listRepo
             // 
@@ -122,12 +122,13 @@ namespace MB_PRESENTATION
             this.listRepo.Name = "listRepo";
             this.listRepo.Size = new System.Drawing.Size(205, 303);
             this.listRepo.TabIndex = 15;
+            this.listRepo.SelectedIndexChanged += new System.EventHandler(this.listRepo_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Ebrima", 15F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(304, 163);
+            this.label7.Location = new System.Drawing.Point(313, 163);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 28);
             this.label7.TabIndex = 16;
@@ -139,7 +140,7 @@ namespace MB_PRESENTATION
             this.btnCreateRepo.Location = new System.Drawing.Point(671, 239);
             this.btnCreateRepo.Name = "btnCreateRepo";
             this.btnCreateRepo.Size = new System.Drawing.Size(75, 30);
-            this.btnCreateRepo.TabIndex = 17;
+            this.btnCreateRepo.TabIndex = 3;
             this.btnCreateRepo.Text = "Valider";
             this.btnCreateRepo.UseVisualStyleBackColor = true;
             this.btnCreateRepo.Click += new System.EventHandler(this.btnCreateRepo_Click);

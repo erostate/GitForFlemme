@@ -16,7 +16,7 @@ namespace MB_DONNES
         public static MySqlConnection SeConnecter()
         {
             MySqlConnection connex = null;
-            string chaineConnex = "server=localhost; user id=root; password=; database=cayo_gitforflemme;";
+            string chaineConnex = "server=localhost; user id=root; password=; database=gitforflemme;";
             try
             {
                 connex = new MySqlConnection(chaineConnex);

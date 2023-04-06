@@ -39,7 +39,7 @@ namespace MB_DONNES
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
+                Console.WriteLine("Erreur lors de la recherche du Repo (SelectListRepo) : " + e.Message);
 
                 return listAllRepo;
             }
@@ -50,7 +50,7 @@ namespace MB_DONNES
         /// </summary>
         /// <param name="R">Namespace du repo</param>
         /// <returns>Réussi: 1 | Pas réussi: 0</returns>
-        public static int InsertRessource(Repo R)
+        public static int InsertRepo(string label, string nmsp)
         {
             try
             {
@@ -58,48 +58,85 @@ namespace MB_DONNES
                 connexion.Open();
                 MySqlCommand cmdInsert = new MySqlCommand();
                 cmdInsert.Connection = connexion;
-                cmdInsert.CommandText = "INSERT INTO Ressource(label, namespace)"
+                cmdInsert.CommandText = "INSERT INTO repo(label, namespace)"
                 + "VALUES (@label, @namespace)";
-                cmdInsert.Parameters.AddWithValue("@label", R.GetLabel());
-                cmdInsert.Parameters.AddWithValue("@namespace", Convert.ToInt32(R.GetNbPlace()));
+                cmdInsert.Parameters.AddWithValue("@label", label);
+                cmdInsert.Parameters.AddWithValue("@namespace", nmsp);
                 int res = cmdInsert.ExecuteNonQuery();
                 connexion.Close();
                 return res;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
+                Console.WriteLine("Erreur lors de l'insertion de la Repo (InsertRepo) : " + e.Message);
                 return 0;
             }
         }
 
-        public static string SelectTypeInsertRess(string typeLabel)
+        public static string[,] SelectRepoConnect(string repoNmsp)
         {
             try
             {
-                // Marche pas (Erreur lors de l'insertion de la ressourceData too long for column 'type_ress' at row 1)
                 MySqlConnection connexion = Connexion.SeConnecter();
                 connexion.Open();
 
                 MySqlCommand cmdSelect = new MySqlCommand();
-                cmdSelect.CommandText = "SELECT type_code FROM `type_ress`"
-                    + "WHERE label = '@label'";
-                cmdSelect.Parameters.AddWithValue("@label", typeLabel);
+                cmdSelect.CommandText = "SELECT repo_id, label, init, folder FROM `repo`"
+                    + "WHERE namespace = @nmsp";
+                cmdSelect.Parameters.AddWithValue("@nmsp", repoNmsp);
                 cmdSelect.Connection = connexion;
 
+                string[,] tablRepo = new string[1, 5];
+
                 MySqlDataReader dr = cmdSelect.ExecuteReader();
-                string typeCode = dr.GetValue(0).ToString();
+                while (dr.Read())
+                {
+                    tablRepo[0, 0] = dr.GetValue(0).ToString();
+                    tablRepo[0, 1] = dr.GetValue(1).ToString();
+                    tablRepo[0, 2] = repoNmsp;
+                    tablRepo[0, 3] = dr.GetValue(2).ToString();
+                    tablRepo[0, 4] = dr.GetValue(3).ToString();
+                }
                 dr.Close();
 
                 connexion.Close();
 
-                return typeCode;
+                return tablRepo;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur lors de l'insertion de la ressource" + e.Message);
+                Console.WriteLine("Erreur lors de la recherche du Repo (SelectRepoConnect) : " + e.Message);
 
-                return "error";
+                return new string[1,5];
+            }
+        }
+
+        /// <summary>
+        /// Modification du Folder d'une repo
+        /// </summary>
+        /// <param name="R">Namespace du repo</param>
+        /// <returns>Réussi: 1 | Pas réussi: 0</returns>
+        public static int UpdateFolderRepo(string label, string nmsp)
+        {
+            try
+            {
+                // A faire
+                MySqlConnection connexion = Connexion.SeConnecter();
+                connexion.Open();
+                MySqlCommand cmdInsert = new MySqlCommand();
+                cmdInsert.Connection = connexion;
+                cmdInsert.CommandText = "INSERT INTO repo(label, namespace)"
+                + "VALUES (@label, @namespace)";
+                cmdInsert.Parameters.AddWithValue("@label", label);
+                cmdInsert.Parameters.AddWithValue("@namespace", nmsp);
+                int res = cmdInsert.ExecuteNonQuery();
+                connexion.Close();
+                return res;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur lors de l'insertion de la Repo (InsertRepo) : " + e.Message);
+                return 0;
             }
         }
     }
