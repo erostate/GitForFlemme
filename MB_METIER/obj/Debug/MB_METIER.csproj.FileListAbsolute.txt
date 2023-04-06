@@ -1,0 +1,6 @@
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\bin\Debug\MB_METIER.dll
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\bin\Debug\MB_METIER.pdb
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.csproj.AssemblyReference.cache
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.csproj.CoreCompileInputs.cache
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.dll
+Z:\Matière\AP\MULTIBURO\project\code\win form\WIN_MULTIBURO\MB_METIER\obj\Debug\MB_METIER.pdb
