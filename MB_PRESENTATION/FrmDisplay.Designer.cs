@@ -38,14 +38,17 @@
             this.btnPush = new System.Windows.Forms.Button();
             this.btnSendOneCom = new System.Windows.Forms.Button();
             this.labelRepo = new System.Windows.Forms.Label();
-            this.txtFolderDir = new System.Windows.Forms.TextBox();
+            this.txtAddPcFolder = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtAddPcName = new System.Windows.Forms.TextBox();
+            this.btnAddPc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnInitFolder
             // 
             this.btnInitFolder.Font = new System.Drawing.Font("Ebrima", 10F);
-            this.btnInitFolder.Location = new System.Drawing.Point(302, 12);
+            this.btnInitFolder.Location = new System.Drawing.Point(593, 10);
             this.btnInitFolder.Name = "btnInitFolder";
             this.btnInitFolder.Size = new System.Drawing.Size(195, 30);
             this.btnInitFolder.TabIndex = 4;
@@ -142,30 +145,60 @@
             this.labelRepo.TabIndex = 18;
             this.labelRepo.Text = "Repo";
             // 
-            // txtFolderDir
+            // txtAddPcFolder
             // 
-            this.txtFolderDir.Location = new System.Drawing.Point(117, 17);
-            this.txtFolderDir.Name = "txtFolderDir";
-            this.txtFolderDir.Size = new System.Drawing.Size(180, 20);
-            this.txtFolderDir.TabIndex = 19;
+            this.txtAddPcFolder.Location = new System.Drawing.Point(129, 17);
+            this.txtAddPcFolder.Name = "txtAddPcFolder";
+            this.txtAddPcFolder.Size = new System.Drawing.Size(180, 20);
+            this.txtAddPcFolder.TabIndex = 19;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Ebrima", 9F);
-            this.label3.Location = new System.Drawing.Point(114, 2);
+            this.label3.Location = new System.Drawing.Point(126, -1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 15);
             this.label3.TabIndex = 20;
             this.label3.Text = "Chemin du dossier LOCAL";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Ebrima", 9F);
+            this.label5.Location = new System.Drawing.Point(10, -1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Nom du PC";
+            // 
+            // txtAddPcName
+            // 
+            this.txtAddPcName.Location = new System.Drawing.Point(13, 17);
+            this.txtAddPcName.Name = "txtAddPcName";
+            this.txtAddPcName.Size = new System.Drawing.Size(110, 20);
+            this.txtAddPcName.TabIndex = 21;
+            // 
+            // btnAddPc
+            // 
+            this.btnAddPc.Font = new System.Drawing.Font("Ebrima", 10F);
+            this.btnAddPc.Location = new System.Drawing.Point(315, 10);
+            this.btnAddPc.Name = "btnAddPc";
+            this.btnAddPc.Size = new System.Drawing.Size(68, 34);
+            this.btnAddPc.TabIndex = 23;
+            this.btnAddPc.Text = "Ajouter";
+            this.btnAddPc.UseVisualStyleBackColor = true;
             // 
             // FrmDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddPc);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtAddPcName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtFolderDir);
+            this.Controls.Add(this.txtAddPcFolder);
             this.Controls.Add(this.labelRepo);
             this.Controls.Add(this.btnSendOneCom);
             this.Controls.Add(this.btnPush);
@@ -196,7 +229,10 @@
         private System.Windows.Forms.Button btnPush;
         private System.Windows.Forms.Button btnSendOneCom;
         private System.Windows.Forms.Label labelRepo;
-        private System.Windows.Forms.TextBox txtFolderDir;
+        private System.Windows.Forms.TextBox txtAddPcFolder;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAddPcName;
+        private System.Windows.Forms.Button btnAddPc;
     }
 }

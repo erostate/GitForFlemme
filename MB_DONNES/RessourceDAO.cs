@@ -81,12 +81,12 @@ namespace MB_DONNES
                 connexion.Open();
 
                 MySqlCommand cmdSelect = new MySqlCommand();
-                cmdSelect.CommandText = "SELECT repo_id, label, init, folder FROM `repo`"
+                cmdSelect.CommandText = "SELECT repo_id, label, init FROM `repo`"
                     + "WHERE namespace = @nmsp";
                 cmdSelect.Parameters.AddWithValue("@nmsp", repoNmsp);
                 cmdSelect.Connection = connexion;
 
-                string[,] tablRepo = new string[1, 5];
+                string[,] tablRepo = new string[1, 4];
 
                 MySqlDataReader dr = cmdSelect.ExecuteReader();
                 while (dr.Read())
@@ -95,7 +95,6 @@ namespace MB_DONNES
                     tablRepo[0, 1] = dr.GetValue(1).ToString();
                     tablRepo[0, 2] = repoNmsp;
                     tablRepo[0, 3] = dr.GetValue(2).ToString();
-                    tablRepo[0, 4] = dr.GetValue(3).ToString();
                 }
                 dr.Close();
 
@@ -107,7 +106,51 @@ namespace MB_DONNES
             {
                 Console.WriteLine("Erreur lors de la recherche du Repo (SelectRepoConnect) : " + e.Message);
 
-                return new string[1,5];
+                return new string[1,4];
+            }
+        }
+
+        /// <summary>
+        /// Retourner la liste des PC pour un Repo
+        /// </summary>
+        /// <param name="repoNmsp"></param>
+        /// <returns></returns>
+        public static string[,] SelectPcByRepo(string repoId)
+        {
+            try
+            {
+                MySqlConnection connexion = Connexion.SeConnecter();
+                connexion.Open();
+
+                MySqlCommand cmdSelect = new MySqlCommand();
+                cmdSelect.CommandText = "SELECT label, description, folder FROM `desktop`"
+                    + "WHERE repo = @repoId";
+                cmdSelect.Parameters.AddWithValue("@repoId", repoId);
+                cmdSelect.Connection = connexion;
+
+                string[,] tablPC = new string[10, 3];
+
+                MySqlDataReader dr = cmdSelect.ExecuteReader();
+                int i = 0;
+                while (dr.Read())
+                {
+                    tablPC[i, 0] = dr.GetValue(0).ToString();
+                    tablPC[i, 1] = dr.GetValue(1).ToString();
+                    tablPC[i, 3] = dr.GetValue(2).ToString();
+                    tablPC[i, 4] = repoId;
+                    i++;
+                }
+                dr.Close();
+
+                connexion.Close();
+
+                return tablPC;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erreur lors de la recherche du Repo (SelectRepoConnect) : " + e.Message);
+
+                return new string[1, 3];
             }
         }
 
@@ -116,7 +159,7 @@ namespace MB_DONNES
         /// </summary>
         /// <param name="R">Namespace du repo</param>
         /// <returns>Réussi: 1 | Pas réussi: 0</returns>
-        public static int UpdateFolderRepo(string label, string nmsp)
+        public static int UpdateFolderRepo(string newFolder, string nmsp)
         {
             try
             {
@@ -125,9 +168,8 @@ namespace MB_DONNES
                 connexion.Open();
                 MySqlCommand cmdInsert = new MySqlCommand();
                 cmdInsert.Connection = connexion;
-                cmdInsert.CommandText = "INSERT INTO repo(label, namespace)"
-                + "VALUES (@label, @namespace)";
-                cmdInsert.Parameters.AddWithValue("@label", label);
+                cmdInsert.CommandText = "UPDATE repo SET folder = @folder WHERE repo_id = @repoId";
+                cmdInsert.Parameters.AddWithValue("@folder", newFolder);
                 cmdInsert.Parameters.AddWithValue("@namespace", nmsp);
                 int res = cmdInsert.ExecuteNonQuery();
                 connexion.Close();
@@ -135,7 +177,7 @@ namespace MB_DONNES
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erreur lors de l'insertion de la Repo (InsertRepo) : " + e.Message);
+                Console.WriteLine("Erreur lors de l'update de la Repo (UpdateFolderRepo) : " + e.Message);
                 return 0;
             }
         }
