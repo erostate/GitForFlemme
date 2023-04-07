@@ -40,9 +40,7 @@ namespace MB_PRESENTATION
 
             int result = RessourceDAO.InsertRepo(label, namespaceGit);
             if (result == 1)
-            {
                 MessageBox.Show("Insertion de la Repo faite avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else
                 MessageBox.Show("L'insertion de la Repo n'a pas pu être executé", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

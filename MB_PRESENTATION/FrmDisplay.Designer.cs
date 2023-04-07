@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtAddPcName = new System.Windows.Forms.TextBox();
             this.btnAddPc = new System.Windows.Forms.Button();
+            this.listPcExist = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnInitFolder
@@ -188,12 +189,23 @@
             this.btnAddPc.TabIndex = 23;
             this.btnAddPc.Text = "Ajouter";
             this.btnAddPc.UseVisualStyleBackColor = true;
+            this.btnAddPc.Click += new System.EventHandler(this.btnAddPc_Click);
+            // 
+            // listPcExist
+            // 
+            this.listPcExist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.listPcExist.FormattingEnabled = true;
+            this.listPcExist.Location = new System.Drawing.Point(13, 51);
+            this.listPcExist.Name = "listPcExist";
+            this.listPcExist.Size = new System.Drawing.Size(296, 21);
+            this.listPcExist.TabIndex = 24;
             // 
             // FrmDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listPcExist);
             this.Controls.Add(this.btnAddPc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtAddPcName);
@@ -234,5 +246,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAddPcName;
         private System.Windows.Forms.Button btnAddPc;
+        private System.Windows.Forms.ComboBox listPcExist;
     }
 }

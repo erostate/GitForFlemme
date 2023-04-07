@@ -22,17 +22,22 @@ namespace MB_PRESENTATION
             this.itemRepo = paramItemRepo;
         }
 
+        public string[,] IMyItem()
+        {
+            return RessourceDAO.SelectRepoConnect(itemRepo);
+        }
+
         private void FrmDisplay_Load(object sender, EventArgs e)
         {
-            string[,] myItem = RessourceDAO.SelectRepoConnect(itemRepo);
-
-            if (myItem.Length > 0 )
+            string[,] myItem = IMyItem();
+            if (myItem.Length > 0)
             {
                 labelRepo.Text = myItem[0,2];
                 string[,] listPc = RessourceDAO.SelectPcByRepo(myItem[0, 0]);
 
-                if (listPc.Length == 0)
+                if (listPc[0, 0] == null)
                 {
+                    Console.WriteLine(listPc[0, 0]);
                     // BTN Init
                     btnInitFolder.Enabled = false;
 
@@ -43,6 +48,8 @@ namespace MB_PRESENTATION
                     btnPush.Enabled = false;
                     btnSendOneCom.Enabled = false;
 
+                    // Commande PC
+                    listPcExist.Enabled = false;
                     txtAddPcName.Focus();
                 } else
                 {
@@ -50,8 +57,6 @@ namespace MB_PRESENTATION
                     {
                         // BTN Init
                         btnInitFolder.Enabled = true;
-
-                        Console.WriteLine("ahoh : " + listPc[0,0]);
 
                         // Commande Envoyer
                         txtComCommit.Enabled = false;
@@ -109,6 +114,23 @@ namespace MB_PRESENTATION
                 displayForm.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void btnAddPc_Click(object sender, EventArgs e)
+        {
+            string[,] myItem = IMyItem();
+            int resultAddPc = RessourceDAO.InsertPc(txtAddPcName.Text, txtAddPcFolder.Text, myItem[0, 0]);
+
+            if (resultAddPc == 1)
+                MessageBox.Show("Insertion du PC fait avec succès", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("L'insertion du PC n'a pas pu être executé", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Redirection sur une nouvelle page
+            this.Hide();
+            FrmDisplay displayForm = new FrmDisplay(itemRepo);
+            displayForm.ShowDialog();
+            this.Close();
         }
     }
 }
